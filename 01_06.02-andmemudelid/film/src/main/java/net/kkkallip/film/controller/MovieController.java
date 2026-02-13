@@ -19,7 +19,7 @@ public class MovieController {
     }
 
     @DeleteMapping("movies/{id}")
-    public List<Movie> deleteMovies(@PathVariable Long id){
+    public List<Movie> deleteMovies(@PathVariable Long id) {
         movieRepository.deleteById(id);
         return movieRepository.findAll();
     }

@@ -14,13 +14,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Product {
+public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private String description;
-    private Double price;
-    private Boolean active;
-    private Integer stock;
+    private long id;
+    private String street;
+    private String number;
+    private String city;
+    private String country;
+    private String zipCode;
+
 }

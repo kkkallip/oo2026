@@ -10,7 +10,6 @@ import java.util.List;
 @RestController
 public class MovieController {
 
-    //localhost:8080
     @Autowired
     private MovieRepository movieRepository;
 
@@ -21,13 +20,13 @@ public class MovieController {
 
     @DeleteMapping("movies/{id}")
     public List<Movie> deleteMovies(@PathVariable Long id){
-        movieRepository.deleteById(id); //kustutan
-        return movieRepository.findAll(); //uuenenud seis
+        movieRepository.deleteById(id);
+        return movieRepository.findAll();
     }
 
     @PostMapping("movies")
     public List<Movie> addMovie(@RequestBody Movie movie) {
-        movieRepository.save(movie); // salvestan
-        return movieRepository.findAll(); // uuenenud seis
+        movieRepository.save(movie);
+        return movieRepository.findAll();
     }
 }

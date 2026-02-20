@@ -36,7 +36,6 @@ public class PersonController {
         if (person.getId() != null) {
             throw new RuntimeException("Cannot sign up with ID");
         }
-        personService.
         return personRepository.save(person);
     }
 

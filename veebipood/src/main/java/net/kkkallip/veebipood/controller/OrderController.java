@@ -1,18 +1,24 @@
 package net.kkkallip.veebipood.controller;
 
+import lombok.RequiredArgsConstructor;
+import net.kkkallip.veebipood.dto.OrderRowDto;
 import net.kkkallip.veebipood.entity.Order;
+import net.kkkallip.veebipood.entity.OrderRow;
 import net.kkkallip.veebipood.entity.Product;
 import net.kkkallip.veebipood.repository.OrderRepository;
+import net.kkkallip.veebipood.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 public class OrderController {
 
-    @Autowired
     private OrderRepository orderRepository;
+
+    private OrderService orderService;
 
     @GetMapping("orders")
     public List<Order> getOrders() {
@@ -26,8 +32,7 @@ public class OrderController {
     }
 
     @PostMapping("orders")
-    public List<Order> addOrder(@RequestBody Order product) {
-        orderRepository.save(product);
-        return orderRepository.findAll();
+    public Order addOrder(@RequestParam Long personId, @RequestParam(required = false) String parcelMachine, @RequestBody List<OrderRowDto> orderRows) {
+        return orderService.saveOrder(personId, parcelMachine, orderRows);
     }
 }

@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>net.kkkallip</groupId>
-	<artifactId>veebipood</artifactId>
+	<artifactId>autod</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>veebipood</name>
-	<description>OOp 2026 Veebipood</description>
+	<name>autod</name>
+	<description>Autod</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -79,8 +79,8 @@
 		</dependency>
 		<dependency>
 			<groupId>com.github.vladislavgoltjajev</groupId>
-			<artifactId>java-personal-code</artifactId>
-			<version>1.6</version>
+			<artifactId>java-isikukood</artifactId>
+			<version>2.1</version>
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>

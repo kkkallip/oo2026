@@ -6,21 +6,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
 @Entity
-public class Product {
+public class OrderRow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String description;
-    private Double price;
-    private Boolean active;
-    private Integer stock;
 
     @ManyToOne
-    private Category category;
+    private Product product;
+
+    private int quantity;
 }

@@ -1,5 +1,6 @@
 package net.kkkallip.veebipood.service;
 
+import com.github.vladislavgoltjajev.personalcode.locale.estonia.EstonianPersonalCodeValidator;
 import net.kkkallip.veebipood.entity.Person;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.regex.Pattern;
 public class PersonService {
     private final String regex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\.[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";
     private final Pattern pattern = Pattern.compile(regex);
+    private final EstonianPersonalCodeValidator validator = new EstonianPersonalCodeValidator();
 
     public boolean isValid(String email) {
         Matcher matcher = pattern.matcher(email);
@@ -21,10 +23,13 @@ public class PersonService {
             throw new RuntimeException("Cannot sign up with ID");
         }
         if (person.getEmail() == null) {
-            throw new RuntimeException("Cannot sign up with empty email");
+            throw new RuntimeException("Cannot sign up without email");
         }
         if (person.getPersonalCode() == null) {
-            throw new RuntimeException("Cannot sign up with empty personal code");
+            throw new RuntimeException("Cannot sign up without personal code");
+        }
+        if (!validator.isValid(person.getPersonalCode())) {
+            throw new RuntimeException("Invalid personal code");
         }
         if (!isValid(person.getEmail())) {
             throw new RuntimeException("Invalid email");

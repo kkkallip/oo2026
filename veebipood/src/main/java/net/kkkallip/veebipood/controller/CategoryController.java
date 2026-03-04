@@ -27,6 +27,9 @@ public class CategoryController {
 
     @PostMapping("categories")
     public List<Category> addCategory(@RequestBody Category product) {
+        if (product.getId() != null) {
+            throw new RuntimeException("Cannot add with id");
+        }
         categoryRepository.save(product);
         return categoryRepository.findAll();
     }
